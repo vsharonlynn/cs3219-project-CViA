@@ -3,7 +3,6 @@ from django.db import models
 class JobDescription(models.Model):
     id = models.AutoField(primary_key=True)
     title = models.CharField(max_length=255, null=False)
-    # raw file
 
 class User(models.Model):
     id = models.AutoField(primary_key=True)
@@ -14,4 +13,4 @@ class Cv(models.Model):
     id = models.AutoField(primary_key=True)
     user = models.ForeignKey(User, related_name='cvs')
     job_description = models.ForeignKey(JobDescription, related_name='cvs')
-    # raw file
+    raw = models.FileField(upload_to='raw/')

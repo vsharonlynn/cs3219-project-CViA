@@ -4,7 +4,7 @@ from .models import JobDescription, User, Cv
 class CvSerializer(serializers.ModelSerializer):
     class Meta:
         model = Cv
-        fields = ('id', 'job_description', 'user')
+        fields = ('id', 'job_description', 'user', 'raw')
 
 class JobDescriptionSerializer(serializers.ModelSerializer):
     cvs = CvSerializer
