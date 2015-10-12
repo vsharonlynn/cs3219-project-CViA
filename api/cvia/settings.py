@@ -19,12 +19,6 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.8/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'u7=ts@f@&=!89qepi^-+a(%lnp+%(06k&pvx$n)ujh7bfu2lh*'
-
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-
 ALLOWED_HOSTS = []
 
 
@@ -76,8 +70,11 @@ WSGI_APPLICATION = 'cvia.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': '',
+        'USER': 'cvia',
+        'PASSWORD': '',
+        'HOST': '',
     }
 }
 
@@ -100,3 +97,13 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
 
 STATIC_URL = '/static/'
+
+try:
+    LOCAL_SETTINGS
+except NameError:
+    try:
+        from .local_settings import *
+    except ImportError as import_error:
+        import sys
+        print(sys.stderr.write(import_error))
+        pass
