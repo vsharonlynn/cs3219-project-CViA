@@ -1,0 +1,24 @@
+/*******************************
+     User Global Variables
+*******************************/
+
+@headerFont        : 'Cabin', sans-serif;
+@pageFont          : 'Cabin', sans-serif;
+@googleFontFamily  : 'Cabin:400,500,400italic,700';
+
+@blue             : #2980B9;
+@green            : #27AE60;
+@orange           : #D35400;
+@pink             : #D9499A;
+@red              : #C0392B;
+@teal             : #00B5AD;
+@yellow           : #F1C40f;
+@black            : #1B1C1D;
+@grey             : #7f8c8d;
+@lightGrey        : #95a5a6;
+@white            : #FCFCFC;
+@midnight         : #2c3e50;
+@asphalt          : #34495e;
+
+@darkTextColor    : #2c3e50;
+@purple           : #2c3e50;
