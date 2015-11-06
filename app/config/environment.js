@@ -13,6 +13,7 @@ module.exports = function(environment) {
       }
     },
     contentSecurityPolicy: {
+      'connect-src': "'self' data: localhost:8000",
       'font-src': "'self' data: fonts.gstatic.com",
       'style-src': "'self' 'unsafe-inline' fonts.googleapis.com"
     },
@@ -28,7 +29,7 @@ module.exports = function(environment) {
     // ENV.APP.LOG_TRANSITIONS = true;
     // ENV.APP.LOG_TRANSITIONS_INTERNAL = true;
     // ENV.APP.LOG_VIEW_LOOKUPS = true;
-    ENV.APP.API_HOST = 'http://localhost:8000/api';
+    ENV.APP.API_HOST = 'http://localhost:8000';
   }
 
   if (environment === 'test') {

@@ -19,9 +19,9 @@ from rest_framework.routers import DefaultRouter
 from . import views
 
 router = DefaultRouter()
-router.register(r'job_description', views.JobDescriptionViewSet)
-router.register(r'user', views.UserViewSet)
-router.register(r'cv', views.CvViewSet)
+router.register(r'jobs', views.JobDescriptionViewSet)
+router.register(r'users', views.UserViewSet)
+router.register(r'resumes', views.CvViewSet)
 
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
