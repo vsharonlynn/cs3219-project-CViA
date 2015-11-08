@@ -44,7 +44,7 @@ class Parser(object):
                 continue
 
             if (i-11 >= 0 and lines[i-1] == '') and (i+1 < len(lines) and lines[i+1] == ''):
-                print(lines[i].encode('ascii', 'ignore').decode('utf-8'))
+                #print(lines[i].encode('ascii', 'ignore').decode('utf-8'))
                 max_score, max_category = 0, ''
                 for category in self.categories:
                     synonym_score = 0
@@ -53,7 +53,7 @@ class Parser(object):
                         curr_score = Synonym.determineSynonym(word, category)
                         synonym_score += curr_score
                     synonym_score /= len(words)
-                    print(synonym_score, category)
+                    #print(synonym_score, category)
                     if synonym_score > 0:
                         if synonym_score > max_score:
                             max_score = synonym_score
@@ -68,6 +68,6 @@ class Parser(object):
 
         return data
 
-parser = Parser('')
-result = parser.parse('t.pdf')
-print(result)
+# parser = Parser('')
+# result = parser.parse('t.pdf')
+# print(result)
