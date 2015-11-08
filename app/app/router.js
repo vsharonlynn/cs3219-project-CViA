@@ -9,6 +9,7 @@ Router.map(function() {
   this.route('job');
   this.route('profile');
   this.route('submission');
+  this.route('signup');
 });
 
 export default Router;

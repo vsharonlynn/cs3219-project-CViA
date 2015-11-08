@@ -1,0 +1,41 @@
+<div class="ui stackable borderless pointing main menu">
+  <div class="ui container">
+    <div class="ui item">
+      <button class="ui green icon button">
+        <i class="write icon"></i>
+        Upload CV
+      </button>
+    </div>
+    <div class="ui search item">
+      <div class="ui icon input">
+        <input class="prompt" type="text" placeholder="Search jobs...">
+        <i class="search icon"></i>
+      </div>
+      <div class="results"></div>
+    </div>
+
+    {{#link-to "job" class="item"}}
+      <i class="large newspaper icon"></i>
+      <strong>My Jobs</strong>
+    {{/link-to}}
+
+    {{#link-to "profile" class="item"}}
+      <i class="large user icon"></i>
+      <strong>Profile</strong>
+    {{/link-to}}
+
+    {{#link-to "submission" class="item"}}
+      <i class="large line chart icon"></i>
+      <strong>Submission</strong>
+    {{/link-to}}
+
+    <a href="#" class="right header item">
+      <img class="ui avatar image" />
+      Evan Sebastian
+      &nbsp;
+      <a className="">
+        <small>(Logout)</small>
+      </a>
+    </a>
+  </div>
+</div>

@@ -159,7 +159,7 @@
 
 /* Hovered Item */
 @hoverItemBackground: @subtleTransparentBlack;
-@hoverItemTextColor: @selectedTextColor;
+@hoverItemTextColor: @teal;
 
 /* Pressed Item */
 @pressedItemBackground: @subtleTransparentBlack;
@@ -168,14 +168,14 @@
 
 /* Active Item */
 @activeItemBackground: @transparentBlack;
-@activeItemTextColor: @selectedTextColor;
+@activeItemTextColor: @teal;
 @activeItemFontWeight: normal;
 @activeIconOpacity: 1;
 @activeItemBoxShadow: none;
 
 /* Active Hovered Item */
 @activeHoverItemBackground: @transparentBlack;
-@activeHoverItemColor: @selectedTextColor;
+@activeHoverItemColor: @teal;
 
 /* Selected Dropdown */
 @dropdownSelectedItemBackground: @transparentBlack;

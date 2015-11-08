@@ -1,0 +1,30 @@
+<div class="ui stackable borderless pointing main menu navbar">
+  <div class="ui container">
+    {{#link-to "signup" class="header item"}}
+      CViA
+    {{/link-to}}
+    {{#link-to "job" class="item"}}
+      <i class="large newspaper icon"></i>
+      <strong>Jobs</strong>
+    {{/link-to}}
+    <div class="right menu">
+      <div class="item">
+        <div class="ui left icon input">
+          {{input type="text" value=username placeholder="E-Mail"}}
+          <i class="mail icon"></i>
+        </div>
+      </div>
+      <div class="item">
+        <div class="ui left icon input">
+          {{input type="password" value=password placeholder="Password"}}
+          <i class="asterisk icon"></i>
+        </div>
+      </div>
+      <div class="item">
+        <button class="ui purple button" {{action "login" on "click"}}>
+          Login
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
