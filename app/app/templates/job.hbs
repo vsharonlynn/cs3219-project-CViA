@@ -1,0 +1,9 @@
+<div class="ui hidden divider" />
+
+<div class="ui grid container">
+  <div class="ui three stackable cards">
+    {{#each model as |job|}}
+      {{cvia-job-card job=job }}
+    {{/each}}
+  </div>
+</div>

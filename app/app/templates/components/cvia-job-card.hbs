@@ -1,5 +1,26 @@
-{{#each model as |post|}}
-  {{#blog-post title=post.title}}
-    {{post.body}}
-  {{/blog-post}}
-{{/each}}
+<div class="ui link card">
+  <div class="content">
+    <div class="header">{{job.title}}</div>
+    <div class="meta author">
+      2 days ago by
+      <a class="ui grey link">Evan Sebastian</a>
+    </div>
+    <div class="description">
+      <p class="job-description">{{job.description}}</p>
+      <div class="ui bottom attached">
+        <p><i class="tags icon"></i>
+        <div class="ui label">Computing</div></p>
+      </div>
+    </div>
+  </div>
+  <div class="extra content">
+    <button class="ui left floated green basic button">
+      <i class="send icon"></i>
+      Submit CV
+    </button>
+    <button class="ui right floated orange basic icon button">
+      <i class="remove bookmark icon"></i>
+      Bookmark
+    </button>
+  </div>
+</div>
