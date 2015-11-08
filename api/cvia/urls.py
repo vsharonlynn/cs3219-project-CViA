@@ -1,5 +1,6 @@
 from django.conf.urls import include, url
 from django.contrib import admin
+from django.views.generic.base import RedirectView
 from rest_framework.routers import DefaultRouter
 import cvia.views as views
 
@@ -11,6 +12,14 @@ router.register(r'submissions', views.SubmissionViewSet)
 
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
+    url(r'^account/', include('allauth.urls')),
+    url(r'^api/register', RedirectView.as_view(url='/rest-auth/registration/')),
+    url(r'^api/logout', RedirectView.as_view(url='/rest-auth/logout/')),
+    url(r'^api/login', RedirectView.as_view(url='/rest-auth/login/')),
+    url(r'^api/profile', RedirectView.as_view(url='/rest-auth/user/')),
+    url(r'^api/', include(router.urls)),
     url(r'^api/', include(router.urls)),
     url(r'^docs/', include('rest_framework_swagger.urls')),
+    url(r'^rest-auth/', include('rest_auth.urls')),
+    url(r'^rest-auth/registration/', include('rest_auth.registration.urls'))
 ]

@@ -26,6 +26,8 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = (
+    'allauth',
+    'allauth.account',
     'cvia',
     'corsheaders',
     'django.contrib.admin',
@@ -34,9 +36,12 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-
+    'django.contrib.sites',
     'rest_framework',
+    'rest_framework.authtoken',
     'rest_framework_swagger',
+    'rest_auth',
+    'rest_auth.registration'
 )
 
 MIDDLEWARE_CLASSES = (
@@ -51,6 +56,13 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.security.SecurityMiddleware',
 )
 
+AUTHENTICATION_BACKENDS = (
+    "django.contrib.auth.backends.ModelBackend",
+    "allauth.account.auth_backends.AuthenticationBackend",
+)
+
+SITE_ID = 1
+
 ROOT_URLCONF = 'cvia.urls'
 
 TEMPLATES = [
@@ -60,10 +72,10 @@ TEMPLATES = [
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
+                'django.contrib.auth.context_processors.auth',
                 'django.template.context_processors.debug',
                 'django.template.context_processors.request',
-                'django.contrib.auth.context_processors.auth',
-                'django.contrib.messages.context_processors.messages',
+                'django.contrib.messages.context_processors.messages'
             ],
         },
     },
@@ -71,18 +83,14 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'cvia.wsgi.application'
 
+REST_AUTH_SERIALIZERS = {
+    'USER_SERIALIZER': 'cvia.serializers.UserSerializer'
+}
+
+AUTH_USER_MODEL = 'cvia.User'
+
 # Database
 # https://docs.djangoproject.com/en/1.8/ref/settings/#databases
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': '',
-        'USER': 'cvia',
-        'PASSWORD': '',
-        'HOST': '',
-    }
-}
 
 LOGGING = {
     'version': 1,

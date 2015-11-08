@@ -8,4 +8,4 @@ class ResumeSerializer(ModelSerializer):
 
     class Meta:
         model = Resume
-        fields = ('id', 'author', 'title', 'description', 'raw')
+        fields = ('id', 'author', 'raw')
