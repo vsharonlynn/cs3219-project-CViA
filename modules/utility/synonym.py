@@ -16,7 +16,7 @@ class Synonym():
         w2 = wordnet.synset(wordnet.synsets(second)[0].name())
 
         return w1.wup_similarity(w2)
-    
 
-#print(Synonym.determineSynonym("studies", "education"))
 
+# print(Synonym.determineSynonym("studies", "education"))
+# print(Synonym.determineSynonym("school", "education"))
