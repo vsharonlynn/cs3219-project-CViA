@@ -29,7 +29,10 @@ Research Intern Genome Institute of Singapore. A*STAR, Singapore Aug – Oct 201
 class ChunkParser(nltk.ChunkParserI):
     def __init__(self, train_sents):
          train_data = ChunkParser.tag(train_sents)
-         self.tagger = nltk.UnigramTagger(train_data)
+         t0 = nltk.DefaultTagger('NN')
+         t1 = nltk.UnigramTagger(train_data, backoff=t0)
+         t2 = nltk.BigramTagger(train_data, backoff=t1)
+         self.tagger = t2
 
     def parse(self, test_sents):
          test_data = ChunkParser.tokenize(test_sents)
@@ -54,6 +57,6 @@ class ChunkParser(nltk.ChunkParserI):
                     list.append(pos.encode('ascii', 'ignore').decode('utf-8'))
         return list
 
-# unigram_tagger = ChunkParser(cv1)
-# tagged_data = unigram_tagger.parse(cv2);
-# print(ChunkParser.extract(tagged_data))
+#unigram_tagger = ChunkParser(cv1)
+#tagged_data = unigram_tagger.parse(cv2)
+#print(ChunkParser.extract(tagged_data))
