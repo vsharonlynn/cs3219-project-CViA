@@ -71,7 +71,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'cvia.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/1.8/ref/settings/#databases
 
@@ -85,6 +84,21 @@ DATABASES = {
     }
 }
 
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'console': {
+            'class': 'logging.StreamHandler',
+        },
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['console'],
+            'level': os.getenv('DJANGO_LOG_LEVEL', 'INFO'),
+        },
+    },
+}
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.8/topics/i18n/
@@ -105,12 +119,5 @@ USE_TZ = False
 
 STATIC_URL = '/static/'
 
-try:
-    LOCAL_SETTINGS
-except NameError:
-    try:
-        from .local_settings import *
-    except ImportError as import_error:
-        import sys
-        print(sys.stderr.write(import_error))
-        pass
+
+from .local_settings import *
