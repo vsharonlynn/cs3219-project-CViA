@@ -7,47 +7,30 @@ from pdfminer.pdfinterp import PDFResourceManager, PDFPageInterpreter
 from pdfminer.converter import TextConverter, HTMLConverter, XMLConverter
 from pdfminer.layout import LAParams, LTTextBox, LTTextLine
 from io import StringIO
-from ChunkParser import ChunkParser
 
 class PdfSerializer(object):
     def __init__(self, filename):
         self.filename = filename
 
-    def getText(self):
-        '''Convert PDF to text'''
-        # reference to http://stackoverflow.com/questions/26413216/pdfminer3k-has-no-method-named-create-pages-in-pdfpage
         fp = open(self.filename, 'rb')
         parser = PDFParser(fp)
-        doc = PDFDocument()
-        parser.set_document(doc)
-        doc.set_parser(parser)
-        doc.initialize('')
-        rsrcmgr = PDFResourceManager()
+        self.doc = PDFDocument()
+        parser.set_document(self.doc)
+        self.doc.set_parser(parser)
+        self.doc.initialize('')
+        
+    def writeToTxt(self):
+        text = self.getString()
         txtFile = open(self.filename.replace(".pdf", ".txt"), "w")
-        laparams = LAParams()
-        #string = StringIO()
-        device = TextConverter(rsrcmgr, txtFile, laparams=laparams)
-        interpreter = PDFPageInterpreter(rsrcmgr, device)
-        # Process each page contained in the document.
-
-        
-        
-        for page in doc.get_pages():
-            interpreter.process_page(page)
-
+        txtFile.write(text.encode('ascii','replace').decode("utf-8"))
         txtFile.close()
-        #print(string.getvalue())
-        #outlines = doc.get_outlines()
-        #for (level,title,dest,a,se) in outlines:
-        #    print (level, title)
 
-
-        #chunhow = ChunkParser.tokenize(string.getvalue())
-        #print(chunhow)
-        
-names = {"1.pdf", "2.pdf", "3.pdf", "4.pdf", "5.pdf", "6.pdf", "7.pdf", "8.pdf", "9.pdf"}
-for name in names:
-    print(name)
-    convert = PdfSerializer(name)
-    convert.getText()
-#print(convert.str)
+    def getString(self):
+        rsrcmgr = PDFResourceManager()
+        laparams = LAParams()
+        string = StringIO()
+        device = TextConverter(rsrcmgr, string, laparams=laparams)
+        interpreter = PDFPageInterpreter(rsrcmgr, device)
+        for page in self.doc.get_pages():
+            interpreter.process_page(page)
+        return string.getvalue()
