@@ -20,13 +20,9 @@ class PdfSerializer(object):
         self.doc.initialize('')
         
     def writeToTxt(self):
-        rsrcmgr = PDFResourceManager()
+        text = self.getString()
         txtFile = open(self.filename.replace(".pdf", ".txt"), "w")
-        laparams = LAParams()
-        device = TextConverter(rsrcmgr, txtFile, laparams=laparams)
-        interpreter = PDFPageInterpreter(rsrcmgr, device)        
-        for page in self.doc.get_pages():
-            interpreter.process_page(page)
+        txtFile.write(text.encode('ascii','replace').decode("utf-8"))
         txtFile.close()
 
     def getString(self):
