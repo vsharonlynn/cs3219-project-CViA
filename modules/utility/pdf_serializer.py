@@ -34,3 +34,6 @@ class PdfSerializer(object):
         for page in self.doc.get_pages():
             interpreter.process_page(page)
         return string.getvalue()
+
+test = PdfSerializer("1.pdf")
+print(test.getString())
