@@ -18,7 +18,7 @@ class PdfSerializer(object):
         parser.set_document(self.doc)
         self.doc.set_parser(parser)
         self.doc.initialize('')
-        
+
     def writeToTxt(self):
         text = self.getString()
         txtFile = open(self.filename.replace(".pdf", ".txt"), "w")
@@ -35,5 +35,5 @@ class PdfSerializer(object):
             interpreter.process_page(page)
         return string.getvalue()
 
-test = PdfSerializer("1.pdf")
-print(test.getString())
+#test = PdfSerializer("1.pdf")
+#print(test.getString())

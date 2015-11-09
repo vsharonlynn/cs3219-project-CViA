@@ -22,10 +22,25 @@ Laboratory of Photonics and Interfaces, Ecole Polytechnique de Lausanne, Switzer
  Researched electro-catalytic activity of a Ruthenium complex in a PEFC electrode
 """
 
+class Singleton(type):
+    _instances = {}
+    def __call__(cls, *args, **kwargs):
+        if cls not in cls._instances:
+            cls._instances[cls] = super(Singleton, cls).__call__(*args, **kwargs)
+        return cls._instances[cls]
+
 class Parser(object):
+    __metaclass__ = Singleton
+
     def __init__(self, filenames):
-        self.chunk_parser = ChunkParser(cv_base)
         self.categories = ['experience', 'skills', 'activities', 'education']
+
+        print(filenames)
+        learning_text = ""
+        for filename in filenames:
+            pdf_serializer = PdfSerializer(filename)
+            learning_text += pdf_serializer.getString()
+        self.chunk_parser = ChunkParser(learning_text)
 
     def parse(self, filename):
         # initilize all categories list to []
@@ -68,6 +83,6 @@ class Parser(object):
 
         return data
 
-# parser = Parser('')
+# parser = Parser(['t.pdf'])
 # result = parser.parse('t.pdf')
 # print(result)
