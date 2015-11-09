@@ -193,8 +193,8 @@
 @green            : #21BA45;
 @teal             : #00B5AD;
 @blue             : #2185D0;
-@violet           : #6435C9;
-@purple           : #34495e;
+@violet           : #34495e;
+@purple           : #2c3e50;
 @pink             : #E03997;
 @brown            : #A5673F;
 @grey             : #767676;
