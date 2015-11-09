@@ -73,6 +73,6 @@ class Parser(object):
         else:
             return current_category
 
-parser = Parser(['t.pdf'])
-result = parser.parse('t.pdf')
-print(result)
+# parser = Parser(['t.pdf'])
+# result = parser.parse('t.pdf')
+# print(result)
