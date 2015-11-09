@@ -17,13 +17,13 @@ class Parser(object):
     __metaclass__ = Singleton
 
     def __init__(self, filenames):
-        self.categories = ['experience', 'skills', 'activities', 'education']
+        self.__categories = ['experience', 'skills', 'activities', 'education']
 
         learning_text = ""
         for filename in filenames:
             pdf_serializer = PdfSerializer(filename)
             learning_text += pdf_serializer.getString()
-        self.chunk_parser = ChunkParser(learning_text)
+        self.__chunk_parser = ChunkParser(learning_text)
 
     def parse(self, filename):
         raw_text = self.__extract(filename)
@@ -37,7 +37,7 @@ class Parser(object):
     def __generateDataStructure(self, raw_text):
         # initilize all categories list to []
         data = {}
-        for category in self.categories:
+        for category in self.__categories:
             data[category] = []
 
         # construct {category: [member, ...], category: [member, ...], ...}
@@ -50,7 +50,7 @@ class Parser(object):
             if (i-11 >= 0 and lines[i-1] == '') and (i+1 < len(lines) and lines[i+1] == ''):
                 section_category = self.__chooseCategory(section_category, lines[i])
             elif section_category != '':
-                tokenized_words = self.chunk_parser.extract(lines[i])
+                tokenized_words = self.__chunk_parser.extract(lines[i])
                 for word in tokenized_words:
                     if word != '':
                         data[section_category].append(word)
@@ -58,7 +58,7 @@ class Parser(object):
 
     def __chooseCategory(self, current_category, line):
         max_score, max_category = 0, ''
-        for category in self.categories:
+        for category in self.__categories:
             synonym_score = 0
             words = line.lower().split()
             for word in words:
