@@ -2,7 +2,6 @@ from nltk.corpus import wordnet
 
 class Synonym():
     def getSynonym(word):
-
         synonyms = []
 
         for syn in wordnet.synsets(word):

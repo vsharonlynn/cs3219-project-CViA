@@ -30,8 +30,6 @@ class Analyser(object):
         # update the score using the weightage given
         for i in range(0, 4):
             if self.intScore[i] != 0:
-##                print("weightage: " + str(self.weightage[i])
-##                + " intscore: " + str(self.intScore[i]/self.jdTotal[i]))
                 self.score += self.weightage[i] * self.intScore[i]/self.jdTotal[i]
 
     def getScore(self):
