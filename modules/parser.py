@@ -26,15 +26,21 @@ class Parser(object):
         self.chunk_parser = ChunkParser(learning_text)
 
     def parse(self, filename):
+        raw_text = self.extract(filename)
+        data_structure = self.generateDataStructure(raw_text)
+        return data_structure
+
+    def extract(self, filename):
+        pdf_serializer = PdfSerializer(filename)
+        return pdf_serializer.getString()
+
+    def generateDataStructure(self, raw_text):
         # initilize all categories list to []
         data = {}
         for category in self.categories:
             data[category] = []
 
-        # for each section, get base category, append members to category
-        # to come up with {category: [member, ...], category: [member, ...], ...}
-        pdf_serializer = PdfSerializer(filename)
-        raw_text = pdf_serializer.getString()
+        # construct {category: [member, ...], category: [member, ...], ...}
         section_category = ''
         lines = raw_text.split('\n')
         for i in range(len(lines)):
