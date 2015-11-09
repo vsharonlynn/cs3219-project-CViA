@@ -10,18 +10,18 @@ from io import StringIO
 
 class PdfSerializer(object):
     def __init__(self, filename):
-        self.filename = filename
+        self.__filename = filename
 
-        fp = open(self.filename, 'rb')
+        fp = open(self.__filename, 'rb')
         parser = PDFParser(fp)
-        self.doc = PDFDocument()
-        parser.set_document(self.doc)
-        self.doc.set_parser(parser)
-        self.doc.initialize('')
+        self.__doc = PDFDocument()
+        parser.set_document(self.__doc)
+        self.__doc.set_parser(parser)
+        self.__doc.initialize('')
 
     def writeToTxt(self):
         text = self.getString()
-        txtFile = open(self.filename.replace(".pdf", ".txt"), "w")
+        txtFile = open(self.__filename.replace(".pdf", ".txt"), "w")
         txtFile.write(text.encode('ascii','replace').decode("utf-8"))
         txtFile.close()
 
@@ -31,9 +31,9 @@ class PdfSerializer(object):
         string = StringIO()
         device = TextConverter(rsrcmgr, string, laparams=laparams)
         interpreter = PDFPageInterpreter(rsrcmgr, device)
-        for page in self.doc.get_pages():
+        for page in self.__doc.get_pages():
             interpreter.process_page(page)
         return string.getvalue()
 
-#test = PdfSerializer("1.pdf")
+#test = PdfSerializer("t.pdf")
 #print(test.getString())
