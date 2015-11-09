@@ -32,11 +32,11 @@ class ChunkParser(nltk.ChunkParserI):
          t0 = nltk.DefaultTagger('NN')
          t1 = nltk.UnigramTagger(train_data, backoff=t0)
          t2 = nltk.BigramTagger(train_data, backoff=t1)
-         self.tagger = t2
+         self.__tagger = t2
 
     def parse(self, test_sents):
          test_data = ChunkParser.tokenize(test_sents)
-         tagged = [self.tagger.tag(sent) for sent in test_data]
+         tagged = [self.__tagger.tag(sent) for sent in test_data]
          return tagged
 
     def extract(self, test_sents):
@@ -47,7 +47,7 @@ class ChunkParser(nltk.ChunkParserI):
                 if chunktag == 'NNP':
                     list.append(pos.encode('ascii', 'ignore').decode('utf-8'))
         return list
-    
+
     def tag(document):
         sentences = ChunkParser.tokenize(document)
         sentences = [nltk.pos_tag(sent) for sent in sentences]
