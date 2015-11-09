@@ -76,7 +76,7 @@ class Parser(object):
                 if max_score > 0:
                     section_category = max_category
             elif (section_category != ''):
-                tokenized_words = ChunkParser.extract(self.chunk_parser.parse(lines[i]))
+                tokenized_words = self.chunk_parser.extract(lines[i])
                 for word in tokenized_words:
                     if word != '':
                         data[section_category].append(word)
