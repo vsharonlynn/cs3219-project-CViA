@@ -6,22 +6,6 @@ from utility.chunk_parser import ChunkParser
 from utility.pdf_serializer import PdfSerializer
 from utility.synonym import Synonym
 
-cv_base = """
-WORK EXPERIENCE
-· Research Scholar Jan 2011 – present
-Spin and Energy Laboratory, National University of Singapore
- Developed simulations and computational methods for various research projects
- Designed and conducted nanofabrication experiments for spintronic devices
- Mentored junior students and taught undergraduate modules
-· Research Assistant Aug 2009 – Oct 2010
-Low Temperature Physics Laboratory, Indian Institute of Technology, Kanpur
- Developed Internet based labs
- Researched spin injection into metals
-· Summer Internship June 2008 – July 2008
-Laboratory of Photonics and Interfaces, Ecole Polytechnique de Lausanne, Switzerland
- Researched electro-catalytic activity of a Ruthenium complex in a PEFC electrode
-"""
-
 class Singleton(type):
     _instances = {}
     def __call__(cls, *args, **kwargs):
