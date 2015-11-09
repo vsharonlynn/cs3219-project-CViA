@@ -26,15 +26,15 @@ class Parser(object):
         self.chunk_parser = ChunkParser(learning_text)
 
     def parse(self, filename):
-        raw_text = self.extract(filename)
-        data_structure = self.generateDataStructure(raw_text)
+        raw_text = self.__extract(filename)
+        data_structure = self.__generateDataStructure(raw_text)
         return data_structure
 
-    def extract(self, filename):
+    def __extract(self, filename):
         pdf_serializer = PdfSerializer(filename)
         return pdf_serializer.getString()
 
-    def generateDataStructure(self, raw_text):
+    def __generateDataStructure(self, raw_text):
         # initilize all categories list to []
         data = {}
         for category in self.categories:
@@ -48,7 +48,7 @@ class Parser(object):
                 continue
 
             if (i-11 >= 0 and lines[i-1] == '') and (i+1 < len(lines) and lines[i+1] == ''):
-                section_category = self.chooseCategory(section_category, lines[i])
+                section_category = self.__chooseCategory(section_category, lines[i])
             elif section_category != '':
                 tokenized_words = self.chunk_parser.extract(lines[i])
                 for word in tokenized_words:
@@ -56,7 +56,7 @@ class Parser(object):
                         data[section_category].append(word)
         return data
 
-    def chooseCategory(self, current_category, line):
+    def __chooseCategory(self, current_category, line):
         max_score, max_category = 0, ''
         for category in self.categories:
             synonym_score = 0
