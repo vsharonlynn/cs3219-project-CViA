@@ -19,7 +19,6 @@ class Parser(object):
     def __init__(self, filenames):
         self.categories = ['experience', 'skills', 'activities', 'education']
 
-        print(filenames)
         learning_text = ""
         for filename in filenames:
             pdf_serializer = PdfSerializer(filename)
@@ -43,30 +42,31 @@ class Parser(object):
                 continue
 
             if (i-11 >= 0 and lines[i-1] == '') and (i+1 < len(lines) and lines[i+1] == ''):
-                #print(lines[i].encode('ascii', 'ignore').decode('utf-8'))
-                max_score, max_category = 0, ''
-                for category in self.categories:
-                    synonym_score = 0
-                    words = lines[i].lower().split()
-                    for word in words:
-                        curr_score = Synonym.determineSynonym(word, category)
-                        synonym_score += curr_score
-                    synonym_score /= len(words)
-                    #print(synonym_score, category)
-                    if synonym_score > 0:
-                        if synonym_score > max_score:
-                            max_score = synonym_score
-                            max_category = category
-                if max_score > 0:
-                    section_category = max_category
-            elif (section_category != ''):
+                section_category = self.chooseCategory(section_category, lines[i])
+            elif section_category != '':
                 tokenized_words = self.chunk_parser.extract(lines[i])
                 for word in tokenized_words:
                     if word != '':
                         data[section_category].append(word)
-
         return data
 
-# parser = Parser(['t.pdf'])
-# result = parser.parse('t.pdf')
-# print(result)
+    def chooseCategory(self, current_category, line):
+        max_score, max_category = 0, ''
+        for category in self.categories:
+            synonym_score = 0
+            words = line.lower().split()
+            for word in words:
+                curr_score = Synonym.determineSynonym(word, category)
+                synonym_score += curr_score
+            synonym_score /= len(words)
+            if synonym_score > max_score:
+                max_score = synonym_score
+                max_category = category
+        if max_score > 0:
+            return max_category
+        else:
+            return current_category
+
+parser = Parser(['t.pdf'])
+result = parser.parse('t.pdf')
+print(result)
