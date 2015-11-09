@@ -39,6 +39,15 @@ class ChunkParser(nltk.ChunkParserI):
          tagged = [self.tagger.tag(sent) for sent in test_data]
          return tagged
 
+    def extract(self, test_sents):
+        tagged = ChunkParser.parse(self, test_sents)
+        list = []
+        for sent in tagged:
+            for (pos, chunktag) in sent:
+                if chunktag == 'NNP':
+                    list.append(pos.encode('ascii', 'ignore').decode('utf-8'))
+        return list
+    
     def tag(document):
         sentences = ChunkParser.tokenize(document)
         sentences = [nltk.pos_tag(sent) for sent in sentences]
@@ -49,14 +58,5 @@ class ChunkParser(nltk.ChunkParserI):
         sentences = [nltk.word_tokenize(sent) for sent in sentences]
         return sentences
 
-    def extract(tagged):
-        list = []
-        for sent in tagged:
-            for (pos, chunktag) in sent:
-                if chunktag == 'NNP':
-                    list.append(pos.encode('ascii', 'ignore').decode('utf-8'))
-        return list
-
 #unigram_tagger = ChunkParser(cv1)
-#tagged_data = unigram_tagger.parse(cv2)
-#print(ChunkParser.extract(tagged_data))
+#print(unigram_tagger.extract(cv2))
