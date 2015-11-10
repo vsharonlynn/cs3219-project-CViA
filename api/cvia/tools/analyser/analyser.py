@@ -1,4 +1,5 @@
 # Calculates the score between two ResumeTree data structures
+from cvia.tools.constants import HEADINGS, WEIGHT
 
 class Analyser(object):
 
@@ -6,25 +7,23 @@ class Analyser(object):
        """
        Construct an instance of the Analyser.
        :param jd: The Job Description
-       :return: An Analyser instance
        """
         self.__score = 0
         self.__jd = jd
-        self.__fields = ["education", "skills", "experience", "activities"]
-        self.__weightage = [0.25, 0.25, 0.25, 0.25]
+        self.__fields = HEADINGS
+        self.__weightage = WEIGHT
 
     def compare(self, resume):
         """
         Compare JD and Resume while updating Intermediate Score and JD counts
-        :param resume:
-        :return:
+        :param resume: The resume
         """
 
         self.intScore = [0, 0, 0, 0]
         self.jdTotal = [0, 0, 0, 0]
 
         for i in range(0, 4):
-            if (self.__fields[i] in jd and self.__fields[i] in resume):
+            if (self.__fields[i] in self.jd and self.__fields[i] in resume):
                 for key in self.__jd.get(self.__fields[i]):
                     self.jdTotal[i] += 1
                     if (resume.get(self.__fields[i]).count(key) != 0):
