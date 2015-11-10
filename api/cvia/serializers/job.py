@@ -1,11 +1,11 @@
-from rest_framework.serializers import ModelSerializer
+from rest_framework.serializers import HyperlinkedModelSerializer, PrimaryKeyRelatedField
 from cvia.models import Job
-from .user import UserSerializer
 
 
-class JobSerializer(ModelSerializer):
-    author = UserSerializer
+class JobSerializer(HyperlinkedModelSerializer):
+
+    author = PrimaryKeyRelatedField(read_only=True)
 
     class Meta:
         model = Job
-        fields = ('id', 'author', 'title', 'description', 'raw')
+        fields = ('id', 'author', 'title', 'description', 'raw', 'createdAt')

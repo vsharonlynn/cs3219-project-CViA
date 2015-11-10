@@ -6,7 +6,10 @@ var Router = Ember.Router.extend({
 });
 
 Router.map(function() {
-  this.route('job');
+  this.route('jobs');
+  this.route('job', {
+    path: '/job/:job_id'
+  });
   this.route('profile');
   this.route('submission');
   this.route('signup');

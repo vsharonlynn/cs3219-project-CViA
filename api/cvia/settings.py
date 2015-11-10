@@ -91,6 +91,9 @@ REST_SESSION_LOGIN = False
 
 AUTH_USER_MODEL = 'cvia.User'
 
+CORS_PREFLIGHT_MAX_AGE = 86400
+CORS_ALLOW_CREDENTIALS = True
+
 # Database
 # https://docs.djangoproject.com/en/1.8/ref/settings/#databases
 
@@ -109,6 +112,9 @@ LOGGING = {
         },
     },
 }
+
+ACCOUNT_USER_MODEL_USERNAME_FIELD = 'email'
+
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (

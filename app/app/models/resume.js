@@ -2,7 +2,6 @@ import DS from 'ember-data';
 
 export default DS.Model.extend({
   title: DS.attr('string'),
-  description: DS.attr('string'),
   author: DS.belongsTo('user'),
   raw: DS.attr('string'),
 
@@ -20,5 +19,5 @@ export default DS.Model.extend({
     defaultValue() {
       return new Date();
     }
-  })
+  })  
 });

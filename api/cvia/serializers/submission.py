@@ -1,13 +1,12 @@
-from rest_framework.serializers import ModelSerializer
+from rest_framework.serializers import ModelSerializer, PrimaryKeyRelatedField
 from cvia.models import Submission
-from .job import JobSerializer
-from .resume import ResumeSerializer
 
 
 class SubmissionSerializer(ModelSerializer):
-    resume = ResumeSerializer
-    job = JobSerializer
+
+    resume = PrimaryKeyRelatedField(read_only=True)
+    job = PrimaryKeyRelatedField(read_only=True)
 
     class Meta:
         model = Submission
-        fields = ('id', 'resume', 'job')
+        fields = ('id', 'resume', 'job', 'createdAt')
