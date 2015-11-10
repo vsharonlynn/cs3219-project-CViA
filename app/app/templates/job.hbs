@@ -1,30 +1,32 @@
 
 <div class="ui hidden divider" />
 
-<div class="ui segment">
-  <h2 class="ui centered purple header">
-    {{model.title}}
-    <div class="sub header">
-      Posted by <strong>{{model.author.fullName}}</strong>
-      {{model.ago}}
+<div class="ui text container">
+  <div class="ui segment">
+    <h2 class="ui centered purple header">
+      {{model.title}}
+      <div class="sub header">
+        Posted by <strong>{{model.author.fullName}}</strong>
+        {{model.ago}}
+      </div>
+    </h2>
+    <div class="three buttons">
+      <button class="ui green button">
+        <i class="send icon" />
+        Send my CV
+      </button>
+      <a href="mailto:{{model.author.email}}" class="ui teal button">
+        <i class="mail icon" />
+        E-Mail Recruiter
+      </a>
+      <a href="{{model.url}}" target="_blank" class="ui right floated red button">
+        <i class="download icon" />
+        Download
+      </a>
     </div>
-  </h2>
-  <div class="three buttons">
-    <button class="ui green button">
-      <i class="send icon" />
-      Send my CV
-    </button>
-    <a href="mailto:{{model.author.email}}" class="ui teal button">
-      <i class="mail icon" />
-      E-Mail Recruiter
-    </a>
-    <a href="{{model.url}}" target="_blank" class="ui right floated red button">
-      <i class="download icon" />
-      Download Full PDF
-    </a>
+    <h4 class="ui horizontal divider header">
+      Short Description
+    </h4>
+    <p>{{model.description}}</p>
   </div>
-  <h4 class="ui horizontal divider header">
-    Short Description
-  </h4>
-  <p>{{model.description}}</p>
 </div>

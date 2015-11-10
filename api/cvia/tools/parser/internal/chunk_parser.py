@@ -1,5 +1,4 @@
 import nltk
-from nltk.corpus import conll2000
 
 cv1 = """
 WORK EXPERIENCE
@@ -26,18 +25,19 @@ Research Intern Genome Institute of Singapore. A*STAR, Singapore Aug – Oct 201
     Created a genome data base for few types of cancers
 """
 
+
 class ChunkParser(nltk.ChunkParserI):
     def __init__(self, train_sents):
-         train_data = ChunkParser.tag(train_sents)
-         t0 = nltk.DefaultTagger('NN')
-         t1 = nltk.UnigramTagger(train_data, backoff=t0)
-         t2 = nltk.BigramTagger(train_data, backoff=t1)
-         self.__tagger = t2
+        train_data = ChunkParser.tag(train_sents)
+        t0 = nltk.DefaultTagger('NN')
+        t1 = nltk.UnigramTagger(train_data, backoff=t0)
+        t2 = nltk.BigramTagger(train_data, backoff=t1)
+        self.__tagger = t2
 
     def parse(self, test_sents):
-         test_data = ChunkParser.tokenize(test_sents)
-         tagged = [self.__tagger.tag(sent) for sent in test_data]
-         return tagged
+        test_data = ChunkParser.tokenize(test_sents)
+        tagged = [self.__tagger.tag(sent) for sent in test_data]
+        return tagged
 
     def extract(self, test_sents):
         tagged = ChunkParser.parse(self, test_sents)
@@ -48,13 +48,13 @@ class ChunkParser(nltk.ChunkParserI):
                     list.append(pos.encode('ascii', 'ignore').decode('utf-8'))
         return list
 
-    def tag(document):
-        sentences = ChunkParser.tokenize(document)
+    def tag(self):
+        sentences = ChunkParser.tokenize(self)
         sentences = [nltk.pos_tag(sent) for sent in sentences]
         return sentences
 
-    def tokenize(document):
-        sentences = nltk.sent_tokenize(document)
+    def tokenize(self):
+        sentences = nltk.sent_tokenize(self)
         sentences = [nltk.word_tokenize(sent) for sent in sentences]
         return sentences
 

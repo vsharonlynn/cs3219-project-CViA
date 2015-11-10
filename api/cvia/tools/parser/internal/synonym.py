@@ -1,6 +1,8 @@
 from nltk.corpus import wordnet
 
-class Synonym():
+
+class Synonym:
+
     def getSynonym(word):
         synonyms = []
 

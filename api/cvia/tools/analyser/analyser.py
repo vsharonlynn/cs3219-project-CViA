@@ -1,26 +1,37 @@
-'''
-Calculates the score between two data structures
-'''
+# Calculates the score between two ResumeTree data structures
+
 class Analyser(object):
+
     def __init__(self, jd):
+       """
+       Construct an instance of the Analyser.
+       :param jd: The Job Description
+       :return: An Analyser instance
+       """
         self.__score = 0
         self.__jd = jd
         self.__fields = ["education", "skills", "experience", "activities"]
         self.__weightage = [0.25, 0.25, 0.25, 0.25]
 
     def compare(self, resume):
-        # compare jd and resume while updating intemediate score and JD counts
+        """
+        Compare JD and Resume while updating Intermediate Score and JD counts
+        :param resume:
+        :return:
+        """
+
         self.intScore = [0, 0, 0, 0]
         self.jdTotal = [0, 0, 0, 0]
+
         for i in range(0, 4):
-            if ((self.__fields[i] in jd) and (self.__fields[i] in resume)):
+            if (self.__fields[i] in jd and self.__fields[i] in resume):
                 for key in self.__jd.get(self.__fields[i]):
                     self.jdTotal[i] += 1
                     if (resume.get(self.__fields[i]).count(key) != 0):
                         self.intScore[i] += 1
 
     def changeWeightage(self, edu, skill, exp, act):
-        # allow user to update the weigtage for counting of scores
+        # allow user to update the weightage for counting of scores
         self.__weightage[0] = edu
         self.__weightage[1] = skill
         self.__weightage[2] = exp

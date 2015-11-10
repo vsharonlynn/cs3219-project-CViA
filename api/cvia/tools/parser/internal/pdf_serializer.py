@@ -4,9 +4,10 @@ PDF read method here
 
 from pdfminer.pdfparser import PDFParser, PDFDocument
 from pdfminer.pdfinterp import PDFResourceManager, PDFPageInterpreter
-from pdfminer.converter import TextConverter, HTMLConverter, XMLConverter
-from pdfminer.layout import LAParams, LTTextBox, LTTextLine
+from pdfminer.converter import TextConverter
+from pdfminer.layout import LAParams
 from io import StringIO
+
 
 class PdfSerializer(object):
     def __init__(self, filename):
