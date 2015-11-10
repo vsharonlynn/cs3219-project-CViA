@@ -1,16 +1,16 @@
-<div class="ui stackable borderless pointing main menu navbar">
+<div class="ui borderless pointing fixed menu">
   <div class="ui container">
     {{#link-to "signup" class="header item"}}
       CViA
     {{/link-to}}
-    {{#link-to "job" class="item"}}
+    {{#link-to "jobs" class="item"}}
       <i class="large newspaper icon"></i>
       <strong>Jobs</strong>
     {{/link-to}}
     <div class="right menu">
       <div class="item">
         <div class="ui left icon input">
-          {{input type="text" value=username placeholder="E-Mail"}}
+          {{input type="text" value=email placeholder="E-Mail"}}
           <i class="mail icon"></i>
         </div>
       </div>

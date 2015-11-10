@@ -1,15 +1,19 @@
-<div class="ui link card">
+<div class="card">
   <div class="content">
+
+    <a class="ui teal right corner label">
+      <i class="bookmark icon"></i>
+    </a>
     <div class="header">{{job.title}}</div>
     <div class="meta author">
-      2 days ago by
-      <a class="ui grey link">Evan Sebastian</a>
+      Posted {{ job.ago }} by
+      <a class="ui grey link">{{ job.author.fullName }}</a>
     </div>
     <div class="description">
       <p class="job-description">{{job.description}}</p>
       <div class="ui bottom attached">
         <p><i class="tags icon"></i>
-        <div class="ui label">Computing</div></p>
+        <div class="ui label"></div></p>
       </div>
     </div>
   </div>
@@ -18,9 +22,10 @@
       <i class="send icon"></i>
       Submit CV
     </button>
-    <button class="ui right floated orange basic icon button">
-      <i class="remove bookmark icon"></i>
-      Bookmark
-    </button>
+    {{#link-to 'job' job.id tag='button'
+          class="ui right floated orange basic icon button"}}
+      <i class="info icon"></i>
+      Details
+    {{/link-to }}
   </div>
 </div>

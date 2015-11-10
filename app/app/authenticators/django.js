@@ -7,13 +7,13 @@ export default Base.extend({
             reject();
         }
         Ember.$.ajax({
-            url: 'http://localhost:8000/rest-auth/user/',
+            url: 'http://localhost:8000/api/users/current/',
             type: 'GET',
             headers: {
               "Authorization": "Token " + data.key
             }
         }).then(function(responseObject) {
-            resolve(responseObject);
+            resolve(Object.assign(responseObject, { key: data.key }));
         }, function(jqXHR) {
             reject(jqXHR);
         });

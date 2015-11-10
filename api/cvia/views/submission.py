@@ -4,5 +4,7 @@ from cvia.models import Submission
 
 
 class SubmissionViewSet(ModelViewSet):
+
+    http_method_names = ['get', 'post', 'head']
     serializer_class = SubmissionSerializer
     queryset = Submission.objects.all()

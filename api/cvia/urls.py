@@ -1,8 +1,9 @@
 from django.conf.urls import include, url
+from django.conf.urls.static import static
 from django.contrib import admin
 from django.views.generic.base import RedirectView
-from django.views.decorators.csrf import csrf_exempt
 from rest_framework.routers import DefaultRouter
+from cvia.settings import MEDIA_ROOT
 import cvia.views as views
 
 router = DefaultRouter()
@@ -16,8 +17,7 @@ urlpatterns = [
     url(r'^account/', include('allauth.urls')),
     url(r'^api/profile', RedirectView.as_view(url='/rest-auth/user/')),
     url(r'^api/', include(router.urls)),
-    url(r'^api/', include(router.urls)),
     url(r'^docs/', include('rest_framework_swagger.urls')),
     url(r'^rest-auth/', include('rest_auth.urls')),
     url(r'^rest-auth/registration/', include('rest_auth.registration.urls'))
-]
+] + static('files/', document_root=MEDIA_ROOT)

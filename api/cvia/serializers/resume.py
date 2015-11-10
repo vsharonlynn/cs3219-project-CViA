@@ -1,11 +1,11 @@
-from rest_framework.serializers import ModelSerializer
+from rest_framework.serializers import ModelSerializer, PrimaryKeyRelatedField
 from cvia.models import Resume
-from .user import UserSerializer
 
 
 class ResumeSerializer(ModelSerializer):
-    author = UserSerializer
+
+    author = PrimaryKeyRelatedField(read_only=True)
 
     class Meta:
         model = Resume
-        fields = ('id', 'author', 'raw')
+        fields = ('id', 'title', 'raw', 'author', 'createdAt')

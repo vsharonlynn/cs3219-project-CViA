@@ -1,1 +1,30 @@
-{{outlet}}
+
+<div class="ui hidden divider" />
+
+<div class="ui basic grid">
+  <div class="ten wide column">
+    <h2 class="ui inverted header">
+      {{model.user.fullName}}
+    </h2>
+  </div>
+
+  <div class="right aligned six wide column">
+    <div class="ui large teal label">
+      <i class="user icon" />
+      {{model.user.role}}
+    </div>
+    <div class="ui large grey label">
+      <i class="mail icon" />
+      {{model.user.email}}
+    </div>
+  </div>
+</div>
+
+<div class="ui basic grid">
+  <h2 class="ui horizontal divider inverted header">Resumes</h2>
+  <div class="ui three cards">
+    {{#each model.resumes as |resume|}}
+      {{cvia-resume-card resume=resume }}
+    {{/each}}
+  </div>
+</div>

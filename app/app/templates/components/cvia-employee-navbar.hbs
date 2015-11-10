@@ -1,4 +1,4 @@
-<div class="ui stackable borderless pointing main menu">
+<div class="ui borderless pointing fixed menu">
   <div class="ui container">
     <div class="ui item">
       <button class="ui green icon button">
@@ -14,9 +14,9 @@
       <div class="results"></div>
     </div>
 
-    {{#link-to "job" class="item"}}
+    {{#link-to "jobs" class="item"}}
       <i class="large newspaper icon"></i>
-      <strong>My Jobs</strong>
+      <strong>Jobs</strong>
     {{/link-to}}
 
     {{#link-to "profile" class="item"}}
@@ -31,7 +31,7 @@
 
     <a href="#" class="right header item">
       <img class="ui avatar image" />
-      Evan Sebastian
+      {{ user.first_name }}
       &nbsp;
       <a className="">
         <small>(Logout)</small>

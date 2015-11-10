@@ -1,5 +1,10 @@
-{{#cvia-navbar }}{{/cvia-navbar }}
 
-{{outlet}}
+{{#cvia-navbar user=model.user }}{{/cvia-navbar }}
 
-{{#cvia-footer }}{{/cvia-footer }}
+<div class="ui main grid container">
+  <div class="sixteen wide column">
+    {{outlet}}
+  </div>
+</div>
+
+{{#cvia-footer}}{{/cvia-footer}}

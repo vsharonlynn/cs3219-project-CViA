@@ -14,8 +14,9 @@ module.exports = function(environment) {
     },
     contentSecurityPolicy: {
       'connect-src': "'self' data: localhost:8000",
-      'font-src': "'self' data: fonts.gstatic.com",
-      'style-src': "'self' 'unsafe-inline' fonts.googleapis.com"
+      'font-src': "'self' data: https://fonts.gstatic.com",
+      'style-src': "'self' 'unsafe-inline' https://fonts.googleapis.com",
+      'script-src':  "'self' 'unsafe-eval' localhost:49154 0.0.0.0:49154"
     },
     APP: {
       // Here you can pass flags/options to your application instance
