@@ -6,7 +6,7 @@ class SkillTree(object):
 
         # initilize all categories list to []
         self.__data = {}
-        for category in self.__categories:
+        for category in self.__categories.all():
             self.__data[category] = []
 
     def keys(self):

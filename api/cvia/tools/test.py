@@ -1,26 +1,18 @@
 from categories import Categories
 from skill_tree import SkillTree
 from analyser import Analyser
-from parser import Parser
+from cvia_parser import CviaParser
 
-parser = Parser(['t.pdf'])
-result = parser.parse('t.pdf')
-print(result)
+parser = CviaParser(['t.pdf', 'Resume_DesmondLim_2015.pdf'])
+cv1 = parser.parse('t.pdf')
+print(str(cv1))
+cv2 = parser.parse('Resume_DesmondLim_2015.pdf')
+print(str(cv2))
 
-#===============================================================================
-# jd = {"education": ["Singapore", "NUS", "Oxford"],
-#      "skills": ["python", "java"],
-#      "experience": ["3 years"],
-#      "activities": ["ICPC"]}
-# cv = {"education": ["Malaysia", "NTU", "Oxford"],
-#      "skills": ["python", "javascript"],
-#      "EXPERIENCE": [],
-#      "activities": ["ACM"]}
-# test = Analyser(jd)
-# test.compare(cv)
-# test.computeScore()
-# print(test.getScore())
-# test.changeWeightage(0.1, 0.2, 0.3, 0.4)
-# test.computeScore()
-# print(test.getScore())
-#===============================================================================
+test = Analyser(cv1)
+test.compare(cv2)
+test.computeScore()
+print(test.getScore())
+test.changeWeightage(0.1, 0.2, 0.3, 0.4)
+test.computeScore()
+print(test.getScore())

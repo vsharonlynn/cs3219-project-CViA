@@ -17,7 +17,7 @@ class Analyser(object):
         self.intScore = [0, 0, 0, 0]
         self.jdTotal = [0, 0, 0, 0]
         for i in range(0, 4):
-            if ((self.__fields[i] in self.__jd) and (self.__fields[i] in resume.keys())):
+            if ((self.__fields[i] in self.__jd.keys()) and (self.__fields[i] in resume.keys())):
                 for key in self.__jd.get(self.__fields[i]):
                     self.jdTotal[i] += 1
                     if (resume.get(self.__fields[i]).count(key) != 0):

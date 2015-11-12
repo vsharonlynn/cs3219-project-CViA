@@ -15,7 +15,7 @@ class Singleton(type):
             cls._instances[cls] = super(Singleton, cls).__call__(*args, **kwargs)
         return cls._instances[cls]
 
-class Parser(object):
+class CviaParser(object):
     __metaclass__ = Singleton
 
     def __init__(self, filenames):
