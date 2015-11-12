@@ -13,7 +13,7 @@ class Analyser(object):
         self.intScore = [0, 0, 0, 0]
         self.jdTotal = [0, 0, 0, 0]
         for i in range(0, 4):
-            if ((self.__fields[i] in jd) and (self.__fields[i] in resume)):
+            if ((self.__fields[i] in self.__jd) and (self.__fields[i] in resume)):
                 for key in self.__jd.get(self.__fields[i]):
                     self.jdTotal[i] += 1
                     if (resume.get(self.__fields[i]).count(key) != 0):
@@ -35,6 +35,7 @@ class Analyser(object):
     def getScore(self):
         return self.__score
 
+#===============================================================================
 # jd = {"education": ["Singapore", "NUS", "Oxford"],
 #      "skills": ["python", "java"],
 #      "experience": ["3 years"],
@@ -50,3 +51,4 @@ class Analyser(object):
 # test.changeWeightage(0.1, 0.2, 0.3, 0.4)
 # test.computeScore()
 # print(test.getScore())
+#===============================================================================
