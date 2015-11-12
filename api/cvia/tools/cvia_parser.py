@@ -2,11 +2,11 @@
 Converts PDF file to data structure
 Singleton
 '''
-from utility.chunk_parser import ChunkParser
-from utility.pdf_serializer import PdfSerializer
-from utility.synonym import Synonym
-from categories import Categories
-from skill_tree import SkillTree
+from .utility.chunk_parser import ChunkParser
+from .utility.pdf_serializer import PdfSerializer
+from .utility.synonym import Synonym
+from .categories import Categories
+from .skill_tree import SkillTree
 
 class Singleton(type):
     _instances = {}

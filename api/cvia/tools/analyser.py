@@ -1,7 +1,7 @@
 '''
 Calculates the score between two data structures
 '''
-from categories import Categories
+from .categories import Categories
 
 class Analyser(object):
     def __init__(self, jd):

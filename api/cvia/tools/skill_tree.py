@@ -1,4 +1,4 @@
-from categories import Categories
+from .categories import Categories
 
 class SkillTree(object):
     def __init__(self):
