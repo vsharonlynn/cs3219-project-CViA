@@ -8,15 +8,15 @@ from utility.synonym import Synonym
 from categories import Categories
 from skill_tree import SkillTree
 
-# class Singleton(type):
-#     _instances = {}
-#     def __call__(cls, *args, **kwargs):
-#         if cls not in cls._instances:
-#             cls._instances[cls] = super(Singleton, cls).__call__(*args, **kwargs)
-#         return cls._instances[cls]
+class Singleton(type):
+    _instances = {}
+    def __call__(cls, *args, **kwargs):
+        if cls not in cls._instances:
+            cls._instances[cls] = super(Singleton, cls).__call__(*args, **kwargs)
+        return cls._instances[cls]
 
 class Parser(object):
-    #__metaclass__ = Singleton
+    __metaclass__ = Singleton
 
     def __init__(self, filenames):
         self.__categories = Categories()
