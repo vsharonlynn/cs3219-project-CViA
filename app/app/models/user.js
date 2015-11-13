@@ -8,5 +8,11 @@ export default DS.Model.extend({
   email: DS.attr('string'),
   fullName: Ember.computed('first_name', 'last_name', function() {
     return this.get('first_name') + ' ' + this.get('last_name');
+  }),
+  isEmployee: Ember.computed('role', function() {
+    return this.get('role') === 'Employee';
+  }),
+  isRecruiter: Ember.computed('role', function() {
+    return this.get('role') === 'Recruiter';
   })
 });

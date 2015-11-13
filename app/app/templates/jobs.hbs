@@ -1,8 +1,14 @@
 
-<div class="ui hidden divider" />
-
-<div class="ui three cards">
-  {{#each model.jobs as |job|}}
-    {{cvia-job-card job=job }}
-  {{/each}}
+{{#cvia-navbar user=model.user store=store }}{{/cvia-navbar}}
+<div class="ui main grid container">
+  <div class="sixteen wide column">
+    <div class="ui three cards">
+      {{#each model.jobs as |job|}}
+        {{cvia-job-card store=store job=job
+          resumes=model.resumes user=model.user }}
+      {{/each}}
+    </div>
+  </div>
 </div>
+{{#cvia-footer}}{{/cvia-footer}}
+

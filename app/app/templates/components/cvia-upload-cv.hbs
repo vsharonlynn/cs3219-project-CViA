@@ -1,0 +1,23 @@
+<div id="upload-cv-modal" class="ui small modal">
+  <div class="header">
+    <i class="ui pencil icon"/>
+    Upload New Resume
+  </div>
+  <div class="content text container">
+    <form class="ui very padded form">
+      <div class="ui grid text container">
+        <div class="ten wide column">
+          {{input type="text" value=title
+            placeholder="Title of the Resume (optional)"}}
+        </div>
+        <div class="six wide column">
+          <label for="upload-button" class="ui large red button">
+            <i class="file pdf outline icon"></i>
+            Upload PDF
+          </label>
+          {{ file-upload id="upload-button" title=title store=store }}
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

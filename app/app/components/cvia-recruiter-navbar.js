@@ -1,5 +1,10 @@
 import Ember from 'ember';
 
 export default Ember.Component.extend({
-  tagName: ''
+  tagName: '',
+  actions: {
+    showCreateJobModal() {
+      $('#upload-job-modal').modal('show');
+    }
+  }
 });

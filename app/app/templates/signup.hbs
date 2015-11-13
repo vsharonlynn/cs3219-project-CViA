@@ -1,46 +1,53 @@
 
-<div class="ui basic landing-first">
-  <div class="ui grid">
-    <div class="ten wide column">
-      <div class="ui text container segment">
-        <h2>Some explanation...</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+{{#cvia-navbar user=model.user}}{{/cvia-navbar}}
+<div class="ui main grid container">
+  <div class="sixteen wide column">
+    <div class="ui inverted segment blur-background">
+      <h1 class="ui inverted big centered header">
+        CViA Connects Potential Employees with Recruiters
+      </h1>
+      <div class="ui three column grid">
+        <div class="column">
+          <h3 class="ui inverted center aligned icon header dash_header">
+            <i class="newspaper users icon"></i>
+            Recruiters Post Job Description
+          </h3>
+          <p>Recruiters of a company upload the job description in PDF format.
+          We will then use our sophisticated argument to parse the job description
+          and extract useful information from it.
+          </p>
+        </div>
+        <div class="column">
+          <h3 class="ui inverted center aligned icon header dash_header">
+            <i class="send icon"></i>
+             Interested Applicants Send Their Resume
+          </h3>
+          <p>Potential employees upload their CV and respond to the job description
+          he is interested in.
+          </p>
+        </div>
+        <div class="column">
+          <h3 class="ui inverted center aligned icon header dash_header">
+            <i class="tasks icon"></i>
+             Recruiters View the Resume Score
+          </h3>
+          <p>CViA will use an algorithm to match the resume with the job description
+          and show the similarity score to employers.
+          </p>
+        </div>
       </div>
     </div>
-    <div class="six wide violet padded column">
+
+    <div class="ui hidden divider"/>
+
+    <div class="ui inverted segment text container blur-background">
       <h1 class="ui huge center aligned inverted header">
-        Sign Up
+        Interested? Sign Up Now
+        <div class="sub header">Signing up is required to upload
+        resume or post job opening</div>
       </h1>
-      <form class="ui form">
-        <div class="two fields">
-          <div class="field">
-            <input type="text" name="first-name" placeholder="First Name">
-          </div>
-          <div class="field">
-            <input type="text" name="last-name" placeholder="Last Name">
-          </div>
-        </div>
-        <div class="field">
-          <input type="email" name="email" placeholder="E-mail">
-        </div>
-        <div class="field">
-          <input type="password" name="email" placeholder="Password">
-        </div>
-        <div class="field">
-          <input type="password" name="email" placeholder="Password (again)">
-        </div>
-        <div class="two fields">
-          <div class="ui radio inverted checkbox">
-            <input type="radio" name="fruit" checked="" tabindex="0" class="hidden">
-            <label>I am an Employee</label>
-          </div>
-          <div class="ui radio inverted checkbox">
-            <input type="radio" name="fruit" checked="" tabindex="0" class="hidden">
-            <label>I am a Recruiter</label>
-          </div>
-        </div>
-        <button class="ui fluid teal button" type="submit">Sign Up</button>
-      </form>
+      {{ cvia-signup-form action='toJobs' }}
     </div>
   </div>
 </div>
+{{#cvia-footer}}{{/cvia-footer}}

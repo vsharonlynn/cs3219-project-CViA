@@ -1,0 +1,40 @@
+<form class="ui form">
+  <div class="two fields">
+    <div class="field">
+      {{input type="text" value=first_name placeholder="First Name"}}
+    </div>
+    <div class="field">
+      {{input type="text" value=last_name placeholder="Last Name"}}
+    </div>
+  </div>
+  <div class="field">
+    {{input type="email" value=email placeholder="E-mail"}}
+  </div>
+  <div class="field">
+    {{input type="password" value=password1 placeholder="Password"}}
+  </div>
+  <div class="field">
+    {{input type="password" value=password2 placeholder="Password (again)"}}
+  </div>
+  <div class="ui segment">
+    <div class="two inline fields">
+      <div class="field">
+        {{ui-radio name="role" label="I am an Employee" value="Employee" current=role}}
+      </div>
+      <div class="field">
+        {{ui-radio name="role" label="I am a Recruiter" value="Recruiter" current=role}}
+      </div>
+    </div>
+  </div>
+  <div class="ui horizontal divider"/>
+  <div class="ui two buttons">
+    <button {{action "signup" on "click"}}
+      class="ui big fluid teal button">
+        Sign Up
+    </button>
+    <button {{action "toJobs" on "click"}}
+      class="ui big fluid button">
+        Thanks, just let me see who's hiring
+    </button>
+  </div>
+</form>

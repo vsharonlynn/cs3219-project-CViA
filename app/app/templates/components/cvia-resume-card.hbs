@@ -1,16 +1,24 @@
-<div class="card">
+ <div class="ui dimmer">
   <div class="content">
-    <div class="header">{{resume.title}}</div>
-    <div class="content">{{resume.ago}}</div>
+    <div class="center">
+      <h2 class="ui inverted header">Delete this Resume?</h2>
+      <button {{action "deleteResumeOk" resume.id on "click"}} class="ui green button">Yes</button>
+      <button {{action "deleteResumeCancel" on "click"}} class="ui button">Cancel</button>
+    </div>
   </div>
-  <div class="extra content">
-    <a href="{{resume.url}}" class="ui left floated green basic button">
-      <i class="download icon"></i>
-      Download
-    </a>
-    <a href="{{resume.url}}" class="ui left floated red basic button">
-      <i class="trash icon"></i>
-      Delete
-    </a>
-  </div>
+</div>
+<div class="content">
+  <div class="header">{{resume.title}}</div>
+  <div class="meta">Created {{resume.ago}}</div>
+</div>
+<div class="extra content">
+  <a href="{{resume.raw.datafile}}" class="ui left floated green button">
+    <i class="download icon"></i>
+    Download
+  </a>
+  <button {{action "deleteResumeStart" on "click"}}
+      class="ui left floated button">
+    <i class="trash icon"></i>
+    Delete
+  </button>
 </div>

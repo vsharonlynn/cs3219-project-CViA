@@ -3,6 +3,15 @@
 
 body {
   background-color: #22313F;
+  background: url('background.jpg') no-repeat center center fixed;
+  -moz-background-size: cover;
+  -webkit-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.blur-background {
+  background-color: rgba(0, 0, 0, 0.7) !important;
 }
 
 .main {
@@ -18,4 +27,8 @@ body {
 
 .new-job-text {
   color: green;
+}
+
+#upload-button, #job-upload-button {
+  display: none;
 }

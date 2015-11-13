@@ -1,32 +1,36 @@
-
-<div class="ui hidden divider" />
-
-<div class="ui text container">
-  <div class="ui segment">
-    <h2 class="ui centered purple header">
-      {{model.title}}
-      <div class="sub header">
-        Posted by <strong>{{model.author.fullName}}</strong>
-        {{model.ago}}
+{{#cvia-navbar user=model.user store=store }}{{/cvia-navbar}}
+<div class="ui main grid container">
+  <div class="sixteen wide column">
+    <div class="ui text container">
+      <div class="ui segment">
+        <h2 class="ui centered purple header">
+          {{model.title}}
+          <div class="sub header">
+            Posted by <strong>{{model.author.fullName}}</strong>
+            {{model.ago}}
+          </div>
+        </h2>
+        <div class="three buttons">
+          <button class="ui green button">
+            <i class="send icon" />
+            Send my CV
+          </button>
+          <a href="mailto:{{model.author.email}}" class="ui teal button">
+            <i class="mail icon" />
+            E-Mail Recruiter
+          </a>
+          {{#if model.raw.isLoaded }}
+            <a href="{{model.raw.url}}" target="_blank" class="ui right floated red button">
+              <i class="pdf file outline icon" />
+              Download PDF
+            </a>
+          {{/if}}
+        </div>
+        <h4 class="ui horizontal divider header">
+          Short Description
+        </h4>
+        <p>{{model.description}}</p>
       </div>
-    </h2>
-    <div class="three buttons">
-      <button class="ui green button">
-        <i class="send icon" />
-        Send my CV
-      </button>
-      <a href="mailto:{{model.author.email}}" class="ui teal button">
-        <i class="mail icon" />
-        E-Mail Recruiter
-      </a>
-      <a href="{{model.url}}" target="_blank" class="ui right floated red button">
-        <i class="download icon" />
-        Download
-      </a>
     </div>
-    <h4 class="ui horizontal divider header">
-      Short Description
-    </h4>
-    <p>{{model.description}}</p>
   </div>
 </div>

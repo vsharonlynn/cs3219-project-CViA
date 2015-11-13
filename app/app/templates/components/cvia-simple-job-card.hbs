@@ -1,0 +1,25 @@
+ <div class="ui dimmer">
+  <div class="content">
+    <div class="center">
+      <h2 class="ui inverted header">Delete this Job?</h2>
+      <button {{action "deleteJobOk" job.id on "click"}} class="ui green button">Yes</button>
+      <button {{action "deleteJobCancel" on "click"}} class="ui button">Cancel</button>
+    </div>
+  </div>
+</div>
+<div class="content">
+  <div class="header">{{job.title}}</div>
+  <div class="meta">Created {{job.ago}}</div>
+  <div class="description">{{job.description}}</div>
+</div>
+<div class="extra content">
+  <a href="{{job.raw.datafile}}" class="ui left floated green button">
+    <i class="download icon"></i>
+    Download
+  </a>
+  <button {{action "deleteJobStart" on "click"}}
+      class="ui left floated button">
+    <i class="trash icon"></i>
+    Delete
+  </button>
+</div>

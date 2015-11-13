@@ -1,4 +1,3 @@
-from django.shortcuts import get_object_or_404
 from rest_framework.viewsets import ModelViewSet
 from rest_framework.decorators import permission_classes, list_route
 from rest_framework.permissions import IsAuthenticated
@@ -21,5 +20,8 @@ class UserViewSet(ModelViewSet):
     @list_route(methods=['get'])
     @permission_classes([IsAuthenticated])
     def current(self, request, *args, **kwargs):
-        serialized = UserSerializer(request.user)
-        return Response(serialized.data)
+        if request.user is None or request.user.is_anonymous():
+            return Response(status=401)
+        else:
+            serialized = UserSerializer(request.user)
+            return Response(serialized.data)

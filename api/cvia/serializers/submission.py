@@ -9,4 +9,4 @@ class SubmissionSerializer(ModelSerializer):
 
     class Meta:
         model = Submission
-        fields = ('id', 'resume', 'job', 'createdAt')
+        fields = ('id', 'resume', 'job', 'created_at')

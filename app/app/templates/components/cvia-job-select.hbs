@@ -1,0 +1,15 @@
+<div id="cvia-job-select" class="ui modal">
+  <div class="header">Submit CV</div>
+  <div class="content">
+    <h2 class="ui header">{{job.title}}
+      <div class="sub header">by {{job.author.fullName}}</div>
+    </h2>
+    <p>{{job.description}}</p>
+    <h3 class="ui horizontal divider">Select Resume</h3>
+    <div class="ui three cards">
+     {{#each resumes as |resume|}}
+        {{cvia-resume-select-card action='submitCV' resume=resume }}
+     {{/each}}
+    </div>
+  </div>
+</div>

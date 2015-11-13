@@ -1,5 +1,9 @@
-{{#if session.isAuthenticated}}
-  {{cvia-employee-navbar user=user }}
+{{#if session.isAuthenticated }}
+  {{#if user.isEmployee }}
+    {{cvia-employee-navbar user=user store=store }}
+  {{else}}
+    {{cvia-recruiter-navbar user=user store=store }}
+  {{/if}}
 {{else}}
-  {{cvia-empty-navbar }}
+  {{cvia-empty-navbar}}
 {{/if}}

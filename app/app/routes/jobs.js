@@ -3,7 +3,9 @@ import Ember from 'ember';
 export default Ember.Route.extend({
   model() {
     return {
-      jobs: this.store.findAll('job')
+      user: this.store.findRecord('user', 'current'),
+      jobs: this.store.findAll('job'),
+      resumes: this.store.findAll('resume')
     };
   }
 });

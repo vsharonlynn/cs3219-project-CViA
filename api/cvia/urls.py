@@ -11,6 +11,8 @@ router.register(r'jobs', views.JobViewSet)
 router.register(r'users', views.UserViewSet)
 router.register(r'resumes', views.ResumeViewSet)
 router.register(r'submissions', views.SubmissionViewSet)
+router.register(r'uploads', views.FileUploadViewSet)
+router.register(r'my-jobs', views.MyJobViewSet)
 
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),

@@ -13,7 +13,8 @@
     "loader.js": "ember-cli/loader.js#3.2.1",
     "moment": "~2.10.6",
     "qunit": "~1.18.0",
-    "semantic-ui": "~2.1.5"
+    "semantic-ui": "~2.1.5",
+    "ember-uploader": "0.3.11"
   },
   "resolutions": {
     "ember": "^2.0.0"

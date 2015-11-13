@@ -1,0 +1,30 @@
+<div id="upload-job-modal" class="ui small modal">
+  <div class="header">
+    <i class="ui newspaper icon"/>
+    Post New Job
+  </div>
+  <div class="content text container">
+    <form class="ui very padded form">
+      <div class="ui grid text container">
+        <div class="ten wide column">
+          {{input type="text" value=title
+            placeholder="Title of the Job"}}
+        </div>
+        <div class="six wide column">
+          <label for="job-upload-button" class="ui large red button">
+            <i class="file pdf outline icon"></i>
+            Job Description (PDF)
+          </label>
+          {{job-file-upload id="job-upload-button" title=title
+              description=description store=store }}
+        </div>
+      </div>
+      <div class="ui grid text container">
+        <div class="sixteen wide column">
+          {{textarea type="text" value=description
+            placeholder="Brief description of the job"}}
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

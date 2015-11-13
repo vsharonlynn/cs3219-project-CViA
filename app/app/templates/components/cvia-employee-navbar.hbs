@@ -1,19 +1,12 @@
 <div class="ui borderless pointing fixed menu">
   <div class="ui container">
     <div class="ui item">
-      <button class="ui green icon button">
+      <button {{action 'showCreateCVModal' on 'click'}}
+          class="ui teal icon button">
         <i class="write icon"></i>
         Upload CV
       </button>
     </div>
-    <div class="ui search item">
-      <div class="ui icon input">
-        <input class="prompt" type="text" placeholder="Search jobs...">
-        <i class="search icon"></i>
-      </div>
-      <div class="results"></div>
-    </div>
-
     {{#link-to "jobs" class="item"}}
       <i class="large newspaper icon"></i>
       <strong>Jobs</strong>
@@ -28,14 +21,7 @@
       <i class="large line chart icon"></i>
       <strong>Submission</strong>
     {{/link-to}}
-
-    <a href="#" class="right header item">
-      <img class="ui avatar image" />
-      {{ user.first_name }}
-      &nbsp;
-      <a className="">
-        <small>(Logout)</small>
-      </a>
-    </a>
+    {{cvia-user-status user=user }}
   </div>
 </div>
+{{ cvia-upload-cv store=store }}

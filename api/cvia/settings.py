@@ -37,6 +37,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.sites',
+    'django_extensions',
     'rest_framework',
     'rest_framework.authtoken',
     'rest_framework_swagger',
@@ -55,6 +56,10 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.security.SecurityMiddleware',
 )
+
+ACCOUNT_SIGNUP_FORM_CLASS = 'cvia.models.SignupForm'
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 AUTHENTICATION_BACKENDS = (
     "django.contrib.auth.backends.ModelBackend",
@@ -111,6 +116,11 @@ LOGGING = {
             'level': os.getenv('DJANGO_LOG_LEVEL', 'INFO'),
         },
     },
+}
+
+GRAPH_MODELS = {
+  'all_applications': True,
+  'group_models': True,
 }
 
 ACCOUNT_USER_MODEL_USERNAME_FIELD = 'email'

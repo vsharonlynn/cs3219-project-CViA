@@ -1,31 +1,37 @@
-<div class="card">
-  <div class="content">
-
-    <a class="ui teal right corner label">
-      <i class="bookmark icon"></i>
-    </a>
-    <div class="header">{{job.title}}</div>
-    <div class="meta author">
-      Posted {{ job.ago }} by
-      <a class="ui grey link">{{ job.author.fullName }}</a>
-    </div>
-    <div class="description">
-      <p class="job-description">{{job.description}}</p>
-      <div class="ui bottom attached">
-        <p><i class="tags icon"></i>
-        <div class="ui label"></div></p>
-      </div>
+<div class="content">
+  <a class="ui teal right corner label">
+    <i class="bookmark icon"></i>
+  </a>
+  <div class="header">{{job.title}}</div>
+  <div class="meta author">
+    Posted {{ job.ago }} by
+    <a class="ui grey link">{{ job.author.fullName }}</a>
+  </div>
+  <div class="description">
+    <p class="job-description">{{job.description}}</p>
+    <div class="ui bottom attached">
+      <p><i class="tags icon"></i>
+      <div class="ui label"></div></p>
     </div>
   </div>
-  <div class="extra content">
-    <button class="ui left floated green basic button">
+</div>
+<div class="ui bottom attached two buttons">
+  {{#if user.isEmployee }}
+    <button {{action "showResumeSelectModal" on "click"}}
+      class="ui left floated green button">
       <i class="send icon"></i>
       Submit CV
     </button>
-    {{#link-to 'job' job.id tag='button'
-          class="ui right floated orange basic icon button"}}
-      <i class="info icon"></i>
-      Details
-    {{/link-to }}
-  </div>
+  {{else}}
+    <button class="ui left floated disabled button">
+      <i class="send icon"></i>
+      Submit CV
+    </button>
+  {{/if}}
+  {{#link-to 'job' job.id tag='button'
+        class="ui right floated orange button"}}
+    <i class="info icon"></i>
+    Details
+  {{/link-to }}
 </div>
+{{cvia-job-select store=store job=job resumes=resumes}}
