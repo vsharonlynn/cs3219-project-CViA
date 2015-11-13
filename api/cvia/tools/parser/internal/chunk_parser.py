@@ -28,16 +28,16 @@ Research Intern Genome Institute of Singapore. A*STAR, Singapore Aug – Oct 201
 
 class ChunkParser(nltk.ChunkParserI):
     def __init__(self, train_sents):
-        train_data = ChunkParser.tag(train_sents)
-        t0 = nltk.DefaultTagger('NN')
-        t1 = nltk.UnigramTagger(train_data, backoff=t0)
-        t2 = nltk.BigramTagger(train_data, backoff=t1)
-        self.__tagger = t2
+         train_data = ChunkParser.__tag(train_sents)
+         t0 = nltk.DefaultTagger('NN')
+         t1 = nltk.UnigramTagger(train_data, backoff=t0)
+         t2 = nltk.BigramTagger(train_data, backoff=t1)
+         self.__tagger = t2
 
     def parse(self, test_sents):
-        test_data = ChunkParser.tokenize(test_sents)
-        tagged = [self.__tagger.tag(sent) for sent in test_data]
-        return tagged
+         test_data = ChunkParser.__tokenize(test_sents)
+         tagged = [self.__tagger.tag(sent) for sent in test_data]
+         return tagged
 
     def extract(self, test_sents):
         tagged = ChunkParser.parse(self, test_sents)
@@ -48,13 +48,13 @@ class ChunkParser(nltk.ChunkParserI):
                     list.append(pos.encode('ascii', 'ignore').decode('utf-8'))
         return list
 
-    def tag(self):
-        sentences = ChunkParser.tokenize(self)
+    def __tag(document):
+        sentences = ChunkParser.__tokenize(document)
         sentences = [nltk.pos_tag(sent) for sent in sentences]
         return sentences
 
-    def tokenize(self):
-        sentences = nltk.sent_tokenize(self)
+    def __tokenize(document):
+        sentences = nltk.sent_tokenize(document)
         sentences = [nltk.word_tokenize(sent) for sent in sentences]
         return sentences
 

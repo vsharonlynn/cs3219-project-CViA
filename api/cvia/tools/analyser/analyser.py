@@ -1,17 +1,18 @@
-# Calculates the score between two ResumeTree data structures
-from cvia.tools.constants import HEADINGS, WEIGHT
+'''
+Calculates the score between two data structures
+'''
+from cvia.tools.categories import Categories
+
 
 class Analyser(object):
 
     def __init__(self, jd):
-       """
-       Construct an instance of the Analyser.
-       :param jd: The Job Description
-       """
+        categories = Categories()
+
         self.__score = 0
         self.__jd = jd
-        self.__fields = HEADINGS
-        self.__weightage = WEIGHT
+        self.__fields = categories.all()
+        self.__weightage = [0.25, 0.25, 0.25, 0.25]
 
     def compare(self, resume):
         """
@@ -23,7 +24,7 @@ class Analyser(object):
         self.jdTotal = [0, 0, 0, 0]
 
         for i in range(0, 4):
-            if (self.__fields[i] in self.jd and self.__fields[i] in resume):
+            if ((self.__fields[i] in self.__jd.keys()) and (self.__fields[i] in resume.keys())):
                 for key in self.__jd.get(self.__fields[i]):
                     self.jdTotal[i] += 1
                     if (resume.get(self.__fields[i]).count(key) != 0):
@@ -44,19 +45,3 @@ class Analyser(object):
 
     def getScore(self):
         return self.__score
-
-# jd = {"education": ["Singapore", "NUS", "Oxford"],
-#      "skills": ["python", "java"],
-#      "experience": ["3 years"],
-#      "activities": ["ICPC"]}
-# cv = {"education": ["Malaysia", "NTU", "Oxford"],
-#      "skills": ["python", "javascript"],
-#      "EXPERIENCE": [],
-#      "activities": ["ACM"]}
-# test = Analyser(jd)
-# test.compare(cv)
-# test.computeScore()
-# print(test.getScore())
-# test.changeWeightage(0.1, 0.2, 0.3, 0.4)
-# test.computeScore()
-# print(test.getScore())

@@ -2,9 +2,11 @@
 Converts PDF file to data structure
 Singleton
 '''
-from utility.chunk_parser import ChunkParser
-from utility.pdf_serializer import PdfSerializer
-from utility.synonym import Synonym
+from .utility.chunk_parser import ChunkParser
+from .utility.pdf_serializer import PdfSerializer
+from .utility.synonym import Synonym
+from .categories import Categories
+from .skill_tree import SkillTree
 
 class Singleton(type):
     _instances = {}
@@ -13,11 +15,11 @@ class Singleton(type):
             cls._instances[cls] = super(Singleton, cls).__call__(*args, **kwargs)
         return cls._instances[cls]
 
-class Parser(object):
+class CviaParser(object):
     __metaclass__ = Singleton
 
     def __init__(self, filenames):
-        self.__categories = ['experience', 'skills', 'activities', 'education']
+        self.__categories = Categories()
 
         learning_text = ""
         for filename in filenames:
@@ -35,10 +37,7 @@ class Parser(object):
         return pdf_serializer.getString()
 
     def __generateDataStructure(self, raw_text):
-        # initilize all categories list to []
-        data = {}
-        for category in self.__categories:
-            data[category] = []
+        skill_tree = SkillTree()
 
         # construct {category: [member, ...], category: [member, ...], ...}
         section_category = ''
@@ -53,12 +52,12 @@ class Parser(object):
                 tokenized_words = self.__chunk_parser.extract(lines[i])
                 for word in tokenized_words:
                     if word != '':
-                        data[section_category].append(word)
-        return data
+                        skill_tree.add(section_category, word)
+        return skill_tree
 
     def __chooseCategory(self, current_category, line):
         max_score, max_category = 0, ''
-        for category in self.__categories:
+        for category in self.__categories.all():
             synonym_score = 0
             words = line.lower().split()
             for word in words:
@@ -72,7 +71,3 @@ class Parser(object):
             return max_category
         else:
             return current_category
-
-# parser = Parser(['t.pdf'])
-# result = parser.parse('t.pdf')
-# print(result)
